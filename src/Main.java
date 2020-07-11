@@ -15,15 +15,16 @@ public class Main {
         double[][] c = new double[9][18];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 18; j++) {
-                double asin = Math.asin((x[j] + 1) / 28);
+                double value = (x[j] + 1) / 28;
                 if (b[i] == 18) {
-                    c[i][j] = asin;
+                    c[i][j] = Math.asin(value);
                 }
                 else if (b[i] == 2 || b[i] == 6 || b[i] == 12 || b[i] == 14) {
-                    c[i][j] = (Math.log10(Math.cos(x[j])))*(Math.log10(Math.acos((x[j]+1)/28))+1);
+                    c[i][j] = (Math.log10(Math.cos(x[j])))*(Math.log10(Math.acos(value))+1);
                 }
                 else {
-                    c[i][j] = Math.pow(Math.E, Math.pow(3/ asin, asin))*(2+Math.pow(Math.cos(Math.atan((x[j]+1)/28)), (double) 1/3));
+                    c[i][j] = Math.pow(Math.E, Math.pow(3/ Math.asin(value), Math.asin(value)))*
+                            (2+Math.pow(Math.cos(Math.atan(value)), (double) 1/3));
                 }
 
                 System.out.printf("%10.3f", c[i][j]);//вывод массива с формате с тремя знаками после запятой
